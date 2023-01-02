@@ -3,7 +3,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { FC } from 'react';
-import { CropperDemo } from './Cropper';
+import { CropperDemo } from './CropperDemo';
 
 type Props = {
   open: boolean,

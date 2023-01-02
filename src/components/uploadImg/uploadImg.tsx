@@ -16,7 +16,7 @@ export const ImageUpload = () => {
     setOpen(false);
   };
 
-  const getCroppedFile = (img: string | ArrayBuffer | null) => {
+  const getCroppedFile = (img: string) => {
     if (typeof img === 'string') {
       dispatch(actionsNewUser.setPreview(img));
     }

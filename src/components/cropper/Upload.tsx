@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 
@@ -11,6 +11,8 @@ type Props = {
 };
 
 export const Upload: FC<Props> = ({ getUploadedFile }) => {
+  const input = useRef<HTMLInputElement>(null);
+
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     let files;
@@ -30,6 +32,12 @@ export const Upload: FC<Props> = ({ getUploadedFile }) => {
     }
   };
 
+  const handleClick = () => {
+    if (input.current?.value) {
+      input.current.value = '';
+    }
+  };
+
   return (
     <label htmlFor="contained-button-file" style={{ flexGrow: 1 }}>
       <Input
@@ -38,6 +46,7 @@ export const Upload: FC<Props> = ({ getUploadedFile }) => {
         multiple
         type="file"
         onChange={onChange}
+        ref={input}
       />
       <Button
         variant="outlined"
@@ -46,6 +55,7 @@ export const Upload: FC<Props> = ({ getUploadedFile }) => {
           width: '100%',
           height: '56px',
         }}
+        onClick={handleClick}
       >
         Chose photo
       </Button>
