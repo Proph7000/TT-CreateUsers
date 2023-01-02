@@ -1,27 +1,49 @@
 import React from 'react';
-import './App.scss';
-
-interface Props {
-  onClick: () => void;
-}
-
-export const Provider: React.FC<Props> = React.memo(
-  ({ onClick, children }) => (
-    <button
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  ),
-);
+import {
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
+import { Typography } from '@mui/material';
+import { AddUser } from './pages/addUser';
+import { HomePage } from './pages/homePage';
+import { Users } from './pages/users';
+import { AppBarTop } from './components/appBarTop';
 
 export const App: React.FC = () => {
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>
-        <TodoList />
-      </Provider>
-    </div>
+    <>
+      <AppBarTop />
+
+      <Routes>
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+
+        <Route
+          path="home"
+          element={<Navigate to="/" replace />}
+        />
+
+        <Route path="/adduser" element={<AddUser />} />
+        <Route path="/users" element={<Users />} />
+        <Route
+          path="*"
+          element={(
+            <Typography
+              variant="h2"
+              gutterBottom
+              textAlign="center"
+              sx={{
+                m: 8,
+              }}
+            >
+              Page not found
+            </Typography>
+          )}
+        />
+      </Routes>
+    </>
   );
 };

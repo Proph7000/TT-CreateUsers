@@ -1,11 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { HashRouter as Router } from 'react-router-dom';
 import { App } from './App';
+import { store } from './app/store';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
+import './index.scss';
+
+const Root = () => (
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>
 );
+
+createRoot(document.getElementById('root') as HTMLDivElement)
+  .render(<Root />);
