@@ -12,7 +12,7 @@ import {
   initUsers,
 } from '../../features/usersSlice';
 import { UserAccordion } from '../userAccordion';
-import { Loader } from '../Loader';
+import { Loader } from '../loader';
 
 export const UsersList = () => {
   const dispatch = useAppDispatch();

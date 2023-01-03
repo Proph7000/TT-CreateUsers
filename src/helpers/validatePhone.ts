@@ -1,6 +1,6 @@
 export const validatePhone = (
   phone: string,
-  setIsError: React.Dispatch<React.SetStateAction<boolean>> | null = null,
+  setIsError?: React.Dispatch<React.SetStateAction<boolean>>,
 ) => {
   if (phone.includes('X') && setIsError) {
     setIsError(true);

@@ -67,7 +67,7 @@ export const FormAddUser = () => {
         dispatch(AddAvatar(avatar)),
       ]);
     } else {
-      await Promise.all([
+      await new Promise(() => {
         dispatch(addNewUser({
           name,
           surname,
@@ -75,8 +75,8 @@ export const FormAddUser = () => {
           email,
           birthdate,
           avatarName: '',
-        })),
-      ]);
+        }));
+      });
     }
 
     dispatch(actionsUsers.setIsAdded(true));
