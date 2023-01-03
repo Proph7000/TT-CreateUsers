@@ -51,7 +51,7 @@ export const FormAddUser = () => {
   const addUser = async () => {
     if (preview) {
       const avatar: Avatar = {
-        name: email,
+        name: new Date().getTime().toString(),
         data: preview,
       };
 
@@ -62,7 +62,7 @@ export const FormAddUser = () => {
           phone,
           email,
           birthdate,
-          avatarName: `avatars/${email}`,
+          avatarName: `avatars/${avatar.name}`,
         })),
         dispatch(AddAvatar(avatar)),
       ]);
@@ -89,11 +89,7 @@ export const FormAddUser = () => {
 
     validateForm();
 
-    if (
-      name.length >= 4
-      && validateEmail(email)
-      && validatePhone(phone)
-    ) {
+    if (name.length >= 4 && validateEmail(email) && validatePhone(phone)) {
       addUser();
     }
   };
