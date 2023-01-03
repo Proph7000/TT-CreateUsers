@@ -8,7 +8,7 @@ export const validatePhone = (
     return false;
   }
 
-  if (phone.includes('X')) {
+  if (phone.includes('X') || !phone.length) {
     return false;
   }
 

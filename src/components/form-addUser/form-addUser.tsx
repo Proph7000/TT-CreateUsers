@@ -89,7 +89,11 @@ export const FormAddUser = () => {
 
     validateForm();
 
-    if (name.length >= 4 && validateEmail(email) && validatePhone(phone)) {
+    if (
+      name.length >= 4
+      && validateEmail(email)
+      && validatePhone(phone)
+    ) {
       addUser();
     }
   };
